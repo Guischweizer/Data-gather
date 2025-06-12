@@ -4,3 +4,4 @@ duckduckgo-search
 openai
 python-dotenv
 aiohttp
+google-generativeai

@@ -13,7 +13,7 @@ This project is intended for educational and research purposes only. It is a too
 - **Gravatar Lookup** – Retrieve public profile data from [Gravatar](https://gravatar.com) using email hash.
 - **DuckDuckGo Search** – Perform OSINT keyword-based searches for names or emails.
 - **IntelligenceX Integration** – Check if an email appears in breaches or leaks.
-- **AI-Powered Analysis** – Uses OpenAI GPT to analyze and summarize findings.
+- **Dual AI Analysis** – Choose between OpenAI GPT or Google's Gemini for intelligent analysis of findings
 - **Rich Terminal Output** – Uses `rich` for clean, formatted output.
 - **Docker-ready** – Easily containerizable for isolated environments.
 - **Command-line Interface** – Run with simple flags like `--email` or `--name`.
@@ -52,7 +52,8 @@ touch config.json
   "intelx_api_key": "xxxxxxxxxxxxxxx",
   "dehashed_api_key": "email:password",
   "leakcheck_api_key": "your_key_here",
-  "openai_api_key": "your-openai-api-key-here"
+  "openai_api_key": "your-openai-api-key-here",
+  "gemini_api_key": "your-gemini-api-key-here"
 }
 ```
 
@@ -60,11 +61,14 @@ touch config.json
 
 ### Run with Python
 ```bash 
-# Standard search with AI analysis
+# Standard search with OpenAI analysis (default)
 python main.py --email someone@example.com
 
-# Search by name
-python main.py --name "John Doe"
+# Search with Gemini AI analysis
+python main.py --email someone@example.com --ai gemini
+
+# Search by name with specific AI model
+python main.py --name "John Doe" --ai openai
 
 # Run in test mode (no API calls)
 python main.py --email someone@example.com --test
@@ -74,6 +78,7 @@ python main.py --email someone@example.com --test
 - `--email`: Target email address to investigate
 - `--name`: Full name to search for
 - `--test`: Run in test mode without making API calls (uses mock data)
+- `--ai`: Choose AI service for analysis (options: 'openai' or 'gemini', default: openai)
 
 ### Make it globally executable
 ```bash
